@@ -2,13 +2,20 @@
 <html>
 <head>
   <title>Tf2Pug</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "main" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if !logged_in? %>
+    <%= link_to steam_signin, "/auth/steam" %>
+  <% else%>
+    <%= link_to "Logout", "/logout" %> 
+  <% end %>
+  <%= render 'shared/banner' %>
+  <%= render 'shared/nav' %>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>

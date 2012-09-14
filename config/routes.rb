@@ -1,4 +1,16 @@
 Tf2Pug::Application.routes.draw do
+
+  #get "home/index"
+
+  #get "sessions/create"
+
+  # Steam authentication routes
+  match '/auth/:provider/callback', to: 'sessions#login'
+  match '/auth/failure', to: 'users#steam_login_failure'
+  match '/logout', to: 'sessions#logout'
+  # Set root_url
+  root :to => "home#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
